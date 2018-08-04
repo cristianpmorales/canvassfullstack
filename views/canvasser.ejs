@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Canvasser</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  </head>
+  <body>
+    <h1>Canvasser</h1>
+    <header>
+      <section class="page-header text-center">
+        <h1>Create list</h1>
+      </section>
+
+
+    </header>
+    <% peopleList.forEach( function ( peopleList ){ %>
+      <% if (peopleList.votingActivity === 'N') {%>
+      <div class="item">
+        <%= peopleList.firstName %></a>
+        <%= peopleList.lastName %></a>
+        <%= peopleList.address %></a>
+        <a class="update-link" href="/editpeople/<%= peopleList._id %>" title="Update this todo item"><%= peopleList.votingActivity %></a>
+      </div>
+    <% }; %>
+    <% }); %>
+    </div>
+
+
+      <a href="/login" class="btn btn-default">Login</a>
+      <a href="/signup" class="btn btn-default">Signup</a>
+      <script src="main.js"></script>
+  </body>
+</html>

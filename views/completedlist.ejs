@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title></title>
+  </head>
+  <body>
+
+    <div class="containerNav">
+      <nav class="primary_nav_wrap">
+      <ul>
+        <li> <a href="#">Create Election Campaign</a></li>
+        <li> <a href="/completedlist">View completed list</a></li>
+        <li><a href="/">Go to Canvasser</a></li>
+    </div>
+
+    <% peopleList.forEach( function ( peopleList ){ %>
+      <% if (peopleList.votingActivity === 'Y') {%>
+    <section>
+          <span><%= peopleList.address %></span>
+          <span><%= peopleList.firstName %></span>
+          <span><%= peopleList.lastName %></span>
+          <span><%= peopleList.votingActivity %></span>
+      </section>
+      <% }; %>
+      <% }); %>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+<div id="list">
+  <form action="/createpeople" method="post" accept-charset="utf-8">
+    <div class="item-new">
+      <input class="input" type="text" name="firstName" />
+    </div>
+  </form>
+
+<% peopleList.forEach( function ( peopleList ){ %>
+
+    <% if( peopleList._id == current ){ %>
+    <form class="update-form" action="/updatepeople/<%= peopleList._id %>" method="post" accept-charset="utf-8">
+      <input class="update-input" type="text" name="firstName" value="<%= peopleList.firstName %>" />
+    </form>
+    <% }else{ %>
+    <a class="update-link" href="/edit/<%= peopleList._id %>" title="Update this todo item"><%= peopleList.content %></a>
+    <% } %>
+
+    <% if( peopleList._id == current ){ %>
+    <a class="del-btn-edit" href="/destroypeople/<%= peopleList._id %>" title="Delete this todo item">Delete</a>
+    <% }else{ %>
+    <a class="del-btn" href="/destroypeople/<%= peopleList._id %>" title="Delete this todo item">Delete</a>
+    <% } %>
+  </div>
+<% }); %>
+</div>
+</body>
+</html>
