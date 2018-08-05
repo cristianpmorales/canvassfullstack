@@ -19,7 +19,7 @@ var session      = require('express-session');
 var routes = require( './routes/index.js' );
 var people = require( './routes/people.js' );
 var completeL = require( './routes/completeList.js' );
-var configDB = require('./config/database.js');
+var configDB = require('mongodb://demo123:demo123@ds127851.mlab.com:27851/authenticate');
 var static         = require( 'serve-static' );
 var path           = require( 'path' );
 
