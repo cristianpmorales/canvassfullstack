@@ -4,6 +4,7 @@
 require( './db' );
 // mongoose
 // get all the tools we need
+const cool = require('cool-ascii-faces')
 var express  = require('express');
 var app      = express();
 var port     = process.env.PORT || 3000;
