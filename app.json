@@ -1,0 +1,10 @@
+{
+  "name": "Canvasser application",
+  "description": "This app is my final project",
+  "keywords": [
+    "Cavvass",
+    "List",
+    "create"
+  ],
+  "repository": "https://github.com/cristianpmorales/canvassfullstack.git",
+}
