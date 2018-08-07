@@ -1,22 +1,39 @@
 //*******************************************People Route*****************************************
 var mongoose = require( 'mongoose' );
 var People     = mongoose.model( 'People' );
+var Campaign = mongoose.model( 'Campaign' );
 
 
 exports.indexpeople = function ( req, res, next ){
   var user_id = req.cookies ?
     req.cookies.user_id : undefined;
 
-  People.
-    find({ user_id : user_id }).
-    sort( '-updated_at' ).
-    exec( function ( err, peopleList){
-      if( err ) return next( err );
+var campaign2 = "";
+    Campaign.
+      find({ user_id : user_id }).
+      sort( '-updated_at' ).
+      exec( function ( err, campaign){
+        if( err ) return next( err );
 
-      res.render( 'canvasser', {
-          peopleList : peopleList,
-      });
-    });
+        campaign2 = campaign;
+      })
+      .then( function (err, data) {
+
+        People.
+          find({ user_id : user_id }).
+          sort( '-updated_at' ).
+          exec( function ( err, peopleList){
+            if( err ) return next( err );
+
+            res.render( 'canvasser', {
+                peopleList : peopleList,
+                campaign: campaign2
+            });
+          });
+      }
+      )
+
+
 };
 
 exports.editpeople = function( req, res, next ){

@@ -18,8 +18,9 @@ var bodyParser   = require('body-parser');
 var session      = require('express-session');
 var routes = require( './routes/index.js' );
 var people = require( './routes/people.js' );
+var createCampaign = require( './routes/completedcampaign.js' );
 var completeL = require( './routes/completeList.js' );
-var configDB = require('mongodb://demo123:demo123@ds127851.mlab.com:27851/authenticate');
+var configDB = require('./config/database.js');
 var static         = require( 'serve-static' );
 var path           = require( 'path' );
 
@@ -59,17 +60,25 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================
 // require('./app/routes.js')(app, passport, db); // load our routes and pass in our app and fully configured passport
+//routes to the canvasser app
 app.get(  '/',            routes.indexpeople );
 app.get(  '/edit/:id',    routes.editpeople );
 app.post( '/update/:id',  routes.updatepeople );
 
+//Routes to the admin page
 app.get(  '/profile',           people.indexpeople);
 app.post( '/createpeople',      people.createpeople);
 app.get(  '/destroypeople/:id', people.destroypeople );
 app.get(  '/editpeople/:id',    people.editpeople );
 app.post( '/updatepeople/:id',  people.updatepeople );
+app.get(  '/completedlist',     completeL.indexpeople);
 
-app.get(  '/completedlist',      completeL.indexpeople);
+//Routes to create an election
+app.get(  '/create_campaign',   createCampaign.indexcampaign);
+app.post( '/createcampaign',    createCampaign.createcampaign);
+app.get(  '/destroycampaign/:id', createCampaign.destroycampaign );
+app.get(  '/editcampaign/:id',    createCampaign.editcampaign );
+app.post( '/updatecampaign/:id',  createCampaign.updatecampaign );
 
 app.use( static( path.join( __dirname, 'public' )));
 // launch ======================================================================

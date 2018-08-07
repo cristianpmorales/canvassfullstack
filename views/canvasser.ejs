@@ -9,22 +9,35 @@
     <h1>Canvasser</h1>
     <header>
       <section class="page-header text-center">
-        <h1>Create list</h1>
+        <h1>Complete your list</h1>
       </section>
 
 
     </header>
-    <% peopleList.forEach( function ( peopleList ){ %>
-      <% if (peopleList.votingActivity === 'N') {%>
-      <div class="item">
-        <%= peopleList.firstName %></a>
-        <%= peopleList.lastName %></a>
-        <%= peopleList.address %></a>
-        <a class="update-link" href="/editpeople/<%= peopleList._id %>" title="Update this todo item"><%= peopleList.votingActivity %></a>
-      </div>
-    <% }; %>
-    <% }); %>
-    </div>
+
+
+    <section>
+      <% campaign.forEach( function ( campaign ){ %>
+        <% if (campaign.status != "C") { %>
+        <section class="item">
+          <%= campaign.campaignScript %>
+          <section>
+            <% peopleList.forEach( function ( peopleList ){ %>
+              <% if (peopleList.votingActivity === 'N') {%>
+              <section class="item">
+                <%= peopleList.firstName %></a>
+                <%= peopleList.lastName %></a>
+                <%= peopleList.address %></a>
+                <a class="update-link" href="/editpeople/<%= peopleList._id %>" title="Update this todo item"><%= peopleList.votingActivity %></a>
+              </section>
+              <% }; %>
+            <% }); %>
+          </section>
+        </section>
+        <% }; %>
+      <% }); %>
+    </section>
+
 
 
       <a href="/login" class="btn btn-default">Login</a>

@@ -1,10 +1,10 @@
 var mongoose = require( 'mongoose' );
 var Schema   = mongoose.Schema;
 
-var  Elections = new Schema({
-    date        : Date,
-    status      : Number,
-    description : String
+var Campaign = new Schema({
+    description : String,
+    campaignScript  : String,
+    status  : String
 });
 
 var People = new Schema({
@@ -15,5 +15,5 @@ var People = new Schema({
 });
 
 
-mongoose.model( 'Elections', Elections );
+mongoose.model( 'Campaign', Campaign );
 mongoose.model( 'People', People );

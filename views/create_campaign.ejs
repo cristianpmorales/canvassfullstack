@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Create a campaign</title>
+  </head>
+  <body>
+    <h1>Create a campaign</h1>
+
+    <section class="containerForm">
+      <form action="/createcampaign" method="post" charset="utf-8">
+        <label>Description </label> <input type="text" name="description" />
+        <label>Script </label> <input type="text" name="campaignScript" />
+        <label>Status of the election </label> <select class="" name="status">
+          <option value="Y">Started</option>
+          <option value="C">Completed</option>
+          <option value="M">Created</option>
+        </select>
+        <button type="submit" name="button">Submit</button>
+      </form>
+    </section>
+
+    <section>
+    <% campaign.forEach( function ( campaign ){ %>
+      <section class="item">
+        <span> <%= campaign.description %> </span>
+        <a class="" href="/create_campaign/<%= campaign._id %>"><%= campaign.campaignScript %></a>
+        <span> <%= campaign.status%> </span>
+        <a class="" href="/destroycampaign/<%= campaign._id %>">Delete</a>
+      </section>
+    <% }); %>
+  </section>
+
+  </body>
+</html>
